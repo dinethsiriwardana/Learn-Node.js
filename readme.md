@@ -1,1 +1,5 @@
-node app.js
+This code demonstrates the use of the built-in Events module in `Node.js`. The code first imports the module and creates an instance of the `EventEmitter` class. An event listener is then created for an event named `tutorial`, which takes two arguments and logs their sum to the console when the event is emitted.
+
+The code also demonstrates the use of class inheritance, as a new class called `Person` is created that inherits from the `EventEmitter` class. Instances of the Person class are created for Pedro and Christina, with event listeners created for events named `name`. When these events are emitted, they trigger the corresponding event listeners, which log a message to the console with the person's name.
+
+Overall, this code showcases how to use event listeners and emitters in `Node.js`, and how class inheritance can be used to create custom event emitters.
