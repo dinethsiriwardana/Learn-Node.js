@@ -40,5 +40,5 @@ pedro.on('name', () => {
     console.log('my name is ' + pedro.name);
 });
 
-pedro.emit('name');
+pedro.emit('name'); //? this will trigger the event listener
 christina.emit('name');
