@@ -1,44 +1,44 @@
-//?Events module allows institutions to group objects together for a specific purpose
+//? readline module is used to read the input from the user
+const readline = require("readline");
 
-//?importing the events module from node.js. Its a build in module
-const EventEmitter = require('events'); 
-
-
-const eventEmitter = new EventEmitter();
-
-//?creating an event listener
-eventEmitter.on('tutorial', (n1,n2) => {
-    console.log(n1 + n2);
+//? createInterface() method is used to create an interface
+//? process is used to read the input/outdut from the user
+const r1 = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
 });
 
-//? emitting the event
-//? emit is used to trigger an event
-eventEmitter.emit('tutorial', 1, 2);
+let num1 = Math.floor(Math.random() * 10 + 1);
+let num2 = Math.floor(Math.random() * 10 + 1);
+let answer = num1 + num2;
 
-//? creating a class that inherits from the event emitter
-class Person extends EventEmitter {
-    constructor(name) {
-        super();
-        
-        this._name = name;
+r1.question(
+  `What is ${num1} + ${num2} ? \n`,
+  //? userinput is the input given by the user
+  (userInput) => {
+    // console.log(userInput);
+    if (userInput.trim() == answer) {
+      //? trim() is used to remove the white spaces
+      r1.close();
+    } else {
+      r1.setPrompt("Incorrect response, please try again\n");
+      r1.prompt(); //? prompt() is used to prompt the user again
+      r1.on("line", (userInput) => { 
+        //? this line event is used to read the input from the user again until the answer is wrong
+        if (userInput.trim() == answer) {
+          r1.close();
+        } else {
+          r1.setPrompt(
+            `Your answer of ${userInput} is incorrect, please try again\n`
+          );
+          r1.prompt();
+        }
+      });
     }
+  }
+);
 
-    get name() {
-        return this._name;
-    }
-}
-
-
-let pedro = new Person('Pedro');
-let christina = new Person('Christina');
-
-christina.on('name', () => {
-    console.log('my name is ' + christina.name);
+//? close event is used to close the interface
+r1.on("close", () => {
+  console.log("Correct Answer!");
 });
-
-pedro.on('name', () => {
-    console.log('my name is ' + pedro.name);
-});
-
-pedro.emit('name'); //? this will trigger the event listener
-christina.emit('name');
