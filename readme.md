@@ -1,1 +1,3 @@
-Working With File System Module. Creating and Deleting Folders
+This code creates a readable stream from a file named "example.txt" and a writable stream to a file named "example2.txt". The data from the readable stream is read in chunks and written to the writable stream. Essentially, this code copies the contents of "example.txt" to "example2.txt".
+
+Note that this code is written in Node.js, a server-side JavaScript runtime environment, and requires the "fs" module to access the file system. Also, the "data" event is used to listen for new chunks of data to be read from the file. Finally, it's important to handle any errors that may occur during the stream operation.
