@@ -8,7 +8,8 @@ app.get('/', (req, res) => {
 app.get('/example', (req, res) => {
     res.send('hitting example route');
   });
-  
+
+
 app.get('/example/:name/:age', (req, res) => {
    console.log(req.params);
    console.log(req.query);
