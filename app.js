@@ -1,5 +1,6 @@
-const tutorial = require('./tutorial');
+// const fs = require('fs');
+// const zlib = require('zlib');
 
-console.log(tutorial.sum(1,1));
-console.log(tutorial.PI);
-console.log(new tutorial.SomeMethObj);
+// const readStream = fs.createReadStream('./example.txt', 'utf8');
+// const writeStream = fs.createWriteStream('example2.txt');
+// readStream.pipe(writeStream);
