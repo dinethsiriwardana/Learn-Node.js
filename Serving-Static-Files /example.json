@@ -1,0 +1,9 @@
+{
+    "animal": "dog",
+    "name": "Fido",
+    "age": 3,
+    "breed": "Labrador",
+    "color": "black",
+    "weight": 50,
+    "height": 24
+}
