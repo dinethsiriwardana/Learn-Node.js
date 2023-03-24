@@ -1,5 +1,8 @@
-const tutorial = require('./tutorial');
+const express = require('express');
+const app = express();
 
-console.log(tutorial.sum(1,1));
-console.log(tutorial.PI);
-console.log(new tutorial.SomeMethObj);
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.listen(3001);
