@@ -4,6 +4,7 @@ const body = require('body-parser');
 const app = express();
 
 app.use('/public', express.static(path.join(__dirname, 'Static'))); //? static files
+app.use(body.urlencoded({extended: false})); //? body parser
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'Static', 'index.html')); //? sending a file to the browser
