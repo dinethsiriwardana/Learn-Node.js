@@ -10,15 +10,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'Static', 'index.html')); //? sending a file to the browser
 });
 
-app.get('/example', (req, res) => {
-    res.send('hitting example route');
-  });
-
-
-app.get('/example/:name/:age', (req, res) => {
-   console.log(req.params);
-   console.log(req.query);
-   res.send(req.params.name + ' : ' + req.params.age);
-  });
+app.post('/', (req, res) => {
+    console.log(req.body);
+    //? database work here
+    res.send('successfully posted data');
+    });
 
 app.listen(3001);
