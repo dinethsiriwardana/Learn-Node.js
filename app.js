@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');  
+const body = require('body-parser');
 const app = express();
 
 app.use('/public', express.static(path.join(__dirname, 'Static'))); //? static files
