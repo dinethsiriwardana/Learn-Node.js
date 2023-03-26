@@ -56,7 +56,7 @@
 <body>
    
 
-            <form action="/" method="POST">
+            <form action="/" method="POST" id="form" >
                 <h1>Sign In</h1>
                     <div class="form-group">
                         <lable class="lable" for="email">Email Address: </lable>
@@ -69,7 +69,25 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
      
-  
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+                <script>
+        $(document).ready(() => {
+            $('#form').submit((e) => {
+                e.preventDefault();
+                $.ajax({
+                    url: '/',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify($('#form').serializeArray()),
+                    success: (response)=> {
+                        console.log(response);
+                    }
+                });
+            });
+        });
+        </script>
+    </body>
+
 </body>
 
 </html>
