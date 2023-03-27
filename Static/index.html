@@ -44,49 +44,53 @@
             background-color: #0069d9;
             border-color: #0062cc;
         }
-        form {
-  max-width: 600px;
-  margin: 0 auto;
-}
 
-        
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 
 <body>
-   
 
-            <form action="/" method="POST" id="form" >
-                <h1>Sign In</h1>
-                    <div class="form-group">
-                        <lable class="lable" for="email">Email Address: </lable>
-                        <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email">
-                    </div>
-                    <div class="form-group">
-                        <lable for="password">Password: </lable>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-     
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-                <script>
+
+    <form action="/" method="POST" id="form">
+        <h1>Sign In</h1>
+        <div class="form-group">
+            <lable class="lable" for="email">Email Address: </lable>
+            <input type="text" name="email" id="email" class="form-control" placeholder="Enter Email">
+        </div>
+        <div class="form-group">
+            <lable for="password">Password: </lable>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
         $(document).ready(() => {
             $('#form').submit((e) => {
                 e.preventDefault();
+                const formData = $('#form').serializeArray().reduce((obj, item) => {
+                    obj[item.name] = item.value;
+                    return obj;
+                }, {});
                 $.ajax({
                     url: '/',
                     type: 'POST',
                     contentType: 'application/json',
-                    data: JSON.stringify($('#form').serializeArray()),
-                    success: (response)=> {
+                    data: JSON.stringify(formData),
+                    success: (response) => {
                         console.log(response);
                     }
                 });
             });
         });
-        </script>
-    </body>
+    </script>
+</body>
 
 </body>
 
