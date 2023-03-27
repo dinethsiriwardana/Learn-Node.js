@@ -5,10 +5,8 @@ const app = express();
 app.use("/public", express.static(path.join(__dirname, "Static"))); //? static files
 app.set("view engine", "ejs"); //? setting the view engine
 
-app.get("/:userQuery", (req, res) => {
-  res.render("index", {data : {userQuery: req.params.userQuery,
-    searchResults: ["book1", "book2", "book3"], loggedIn: true, username: "John Doe"}}
-   );
-});
+const people = require('./routes/people'); //? importing the people.js file
+
+app.use("/people", people); //? using the people.js file
 
 app.listen(3001);
